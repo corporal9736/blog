@@ -1,0 +1,52 @@
+name: build and deploy github pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check out
+        uses: actions/checkout@v4
+      - name: setup pnpm
+        uses: pnpm/action-setup@v4
+      - name: setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: 'pnpm'
+      - name: setup pages
+        uses: actions/configure-pages@v4
+      - name: install deps
+        run: pnpm install --frozen-lockfile
+      - name: build
+        run: pnpm run build
+      - name: upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .vitepress/dist
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploy to gitHub pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      
+
