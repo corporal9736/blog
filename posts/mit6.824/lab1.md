@@ -5,16 +5,16 @@ date: 2024-06-11
 
 Basically just some design and summary here.
 
-# design of rpc call
-Only two rpc calls are used, `SchedTask` and `TaskDone`. `SchedTask` is used when a worker is looking for a task from the coordinator. And `TaskDone` is used when a worker finished its job and report to the coordinator.
+# design of RPC call
+Only two RPC calls are used, `SchedTask` and `TaskDone`. `SchedTask` is used when a worker is looking for a task from the coordinator. And `TaskDone` is used when a worker finished its job and report to the coordinator.
 
 # design of intermediate file
-I just arrange the name of intermediate file, instead of letting the map-workers report their intermediate file name to the coordinator, in order to make things easier. The intermediate file name will just be `mr-a-b`, where `a` is the task id of map, and `b` is the task id of reduce.  
-And according to the lab guidance, I created a temp file during writing and move it to the final position after writing.
+I just arrange the name of the intermediate files, instead of letting the map-workers report their intermediate files' name to the coordinator, in order to make things easier. The intermediate file name will just be `mr-a-b`, where `a` is the task id of map-task, and `b` is the task id of reduce-task.  
+According to the lab guidance, I created a temp file during writing and move it to the final position after writing.
 
 # design of worker
-I make the worker as simple as possible. The worker should behavior as a function instead of a struct. It doesn't hold any complex states. And it should not deal with any concurrency (i.e. no lock inside worker).  
-The main part of worker is just a loop. The loop will exit when `SchedTask` shows there is no left tasks. And keep running if any task is scheduled or the `SchedTask` is blocked, which means waiting for something to be done (such as some map tasks).  
+I make the worker as simple as possible. The worker should behave as a function instead of a struct. It doesn't hold any complex states. And it should not deal with any concurrency (i.e. no lock inside worker).  
+The main part of worker is just a loop. The loop will exit when `SchedTask` shows there are no left tasks. And keep running if any task is scheduled or the `SchedTask` is blocked, which means waiting for something to be done (such as some map tasks).  
 And workers will just call the `mapf` or `reducef` and do their job. This part doesn't need to be locked, it's just sequential.  
 The whole process can be expressed as: ![lab1_1](./lab1_1.svg)
 
