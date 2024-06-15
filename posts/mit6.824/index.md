@@ -1,6 +1,6 @@
 ---
 title: 'MIT 6.824(6.5840) notes 2024'
-date: 2024-06-10
+date: 1970-01-01
 ---
 
 Tips before starting: some content of this note is my own thinking and idea, thus **it's not sure to be correct**. If you have any questions, feel free to raise an issue on [github](https://github.com/corporal9736/blog/issues).

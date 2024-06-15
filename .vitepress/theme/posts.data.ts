@@ -23,7 +23,7 @@ export default createContentLoader('posts/**/*.md', {
         excerpt,
         date: formatDate(frontmatter.date)
       }))
-      .sort((a, b) => b.date.time - a.date.time)
+      .sort((a, b) => a.date.time - b.date.time)
   }
 })
 
