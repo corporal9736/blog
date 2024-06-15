@@ -34,3 +34,6 @@ type Coordinator struct {
 ```
 I use go routine to achieve crash recovering. As the coordinator schedules a task to a worker, it will also start a routine to sleep for 10 seconds. Then the routine will get the lock, check if the task is still in `running` queue, which means the task is still not done by workers. If so, lock and move the task from `running` back to `maps` or `reduces` so it can be scheduled again.  
 The schedule can be expressed as below: ![lab1_2](./lab1_2.svg)
+
+
+[return to index](./index.md)
