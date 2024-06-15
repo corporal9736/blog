@@ -4,6 +4,11 @@ date: 2024-06-10
 ---
 
 This is a course for distributed systems.  
+Some notes on the concept of this course:
+
+[note 1: Linearizable](./note1_linearizable.md)
+
+
 There are 5 labs, the notes for labs are listed below.
 
 [lab 1: MapReduce](./lab1.md)
