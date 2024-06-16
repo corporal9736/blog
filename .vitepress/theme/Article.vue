@@ -14,8 +14,8 @@ function findCurrentIndex() {
 
 // use the customData date which contains pre-resolved date info
 const crntPost = computed(() => posts[findCurrentIndex()])
-const nextPost = computed(() => posts[findCurrentIndex() - 1])
-const prevPost = computed(() => posts[findCurrentIndex() + 1])
+const nextPost = computed(() => posts[findCurrentIndex() + 1])
+const prevPost = computed(() => posts[findCurrentIndex() - 1])
 </script>
 <template>
   <article class="xl:divide-y xl:divide-gray-200 dark:xl:divide-slate-200/5">
