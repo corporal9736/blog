@@ -13,4 +13,5 @@ Some notes on the concept of this course:
 
 There are 5 labs, the notes for labs are listed below.
 
-[lab 1: MapReduce](./lab1.md)
+[lab 1: MapReduce](./lab1.md)  
+[lab 2: Key-Value Server](./lab2.md)  
