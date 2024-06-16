@@ -36,4 +36,4 @@ I use go routine to achieve crash recovering. As the coordinator schedules a tas
 The schedule can be expressed as below: ![lab1_2](./lab1_2.svg)
 
 
-[return to index](./index.md)
+[return to index](./index)

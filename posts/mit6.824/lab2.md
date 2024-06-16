@@ -15,4 +15,4 @@ So I tried to use `map[int64]string` as cache, but it's too simple that I cannot
 This part is rather simple given the assumption above. We don't need to notify the server about which cache can be dropped safely. However, if a client can send multiple requests concurrently, we will need a way to do that. We can maintain a list of failed request index, then we can always find the smallest index in the failed list. And the request before the smallest index are all succeed, thus can be safely removed from cache of server.
 
 
-[return to index](./index.md)
+[return to index](./index)

@@ -25,4 +25,4 @@ Here the result of `Get` can be "1", "2" or "3". We can absolutely linearize the
 Then we can try to explore what type of operation can be not cached. The answer **might** be idempotent operations, which means performing the operation multiple times will yield the same result. Here result refers not only to return value, but also to side effects on server side. So we can see that `Get` and `Put` can be not cached, but `Append` must be cached. However, this cannot garantee that every operation is produced at most once.
 
 
-[return to index](./index.md)
+[return to index](./index)
